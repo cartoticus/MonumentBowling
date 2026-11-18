@@ -1,12 +1,12 @@
 {
   "name": "Monument Bowling",
   "short_name": "MM Bowling",
-  "description": "Schedule, season info, and roster sign-up for the Monument Mountain High School bowling team.",
+  "description": "Schedule, season info, and roster sign-up for the Monument Mountain Regional High School bowling team.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#F7F3EC",
-  "theme_color": "#9E1B1B",
+  "background_color": "#FBF9F8",
+  "theme_color": "#800020",
   "orientation": "portrait-primary",
   "icons": [
     { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },

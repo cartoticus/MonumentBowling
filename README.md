@@ -1,6 +1,6 @@
 # Monument Bowling — Website
 
-A static site for the Monument Mountain High School bowling team: season info, schedule, and a roster sign-up form. Built for GitHub Pages — no server, no build step, just plain HTML/CSS/JS. Same approach as the Berkshire Leisure League golf site.
+A static site for the Monument Mountain Regional High School bowling team: season info, schedule, and a roster sign-up form. Built for GitHub Pages — no server, no build step, just plain HTML/CSS/JS. Same approach as the Berkshire Leisure League golf site.
 
 ## Deploying to GitHub Pages
 

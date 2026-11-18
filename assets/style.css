@@ -1,30 +1,32 @@
 /* Monument Bowling — shared site styles (no external dependencies) */
 
 :root {
-  --bg: #F7F3EC;
+  --bg: #FBF9F8;
   --card: #FFFFFF;
-  --red: #9E1B1B;
-  --red-2: #7C1414;
-  --red-tint: #F5E3E1;
+  --red: #800020;
+  --red-2: #5E0017;
+  --red-tint: #F6E6E9;
   --ink: #1F1B18;
   --ink-soft: #655E56;
-  --line: #E3DACB;
+  --line: #E8DEDF;
   --good: #2F7A4B;
   --bad: #B3321F;
+  --nav: #800020;
   --shadow: 0 1px 2px rgba(31,27,24,.06), 0 10px 24px rgba(31,27,24,.08);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #161312;
-    --card: #211C1A;
-    --red: #D8504A;
-    --red-2: #B93C37;
-    --red-tint: #3A1F1E;
+    --bg: #151112;
+    --card: #211A1C;
+    --red: #E0687F;
+    --red-2: #C44B63;
+    --red-tint: #3A1A21;
     --ink: #F1EBE2;
     --ink-soft: #B3AA9D;
-    --line: #3A332F;
+    --line: #3C3135;
     --good: #6CC08A;
     --bad: #F08A78;
+    --nav: #5E0017;
     --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 28px rgba(0,0,0,.45);
   }
 }
@@ -47,13 +49,13 @@ a { color: var(--red); }
 section.wrap { padding-block: 24px; }
 
 /* Nav */
-header.site-nav { background: #1F1B18; color: #fff; position: sticky; top: 0; z-index: 10; box-shadow: var(--shadow); }
+header.site-nav { background: var(--nav); color: #fff; position: sticky; top: 0; z-index: 10; box-shadow: var(--shadow); }
 header.site-nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 10px; flex-wrap: wrap; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff; font-family: Georgia, serif; font-weight: 700; }
 .brand img { width: 36px; height: 36px; border-radius: 8px; }
 nav.links { display: flex; align-items: center; gap: 8px 18px; flex-wrap: wrap; }
 nav.links a { color: #fff; text-decoration: none; font-size: .9rem; font-weight: 600; opacity: .8; padding-block: 4px; border-bottom: 2px solid transparent; }
-nav.links a:hover, nav.links a.active { opacity: 1; border-bottom-color: #E2564F; }
+nav.links a:hover, nav.links a.active { opacity: 1; border-bottom-color: #fff; }
 .share-btn { background: none; border: 0; color: #fff; cursor: pointer; padding: 4px; opacity: .85; }
 .share-btn:hover { opacity: 1; }
 .share-btn svg { width: 20px; height: 20px; display: block; }
@@ -93,7 +95,7 @@ ul.checklist li::before { content: "✓"; position: absolute; left: 4px; color: 
 /* Schedule */
 table.schedule { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow); }
 table.schedule th, table.schedule td { padding: 11px 14px; text-align: left; border-bottom: 1px solid var(--line); font-size: .95rem; }
-table.schedule th { background: #1F1B18; color: #fff; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; }
+table.schedule th { background: var(--nav); color: #fff; font-size: .8rem; letter-spacing: .05em; text-transform: uppercase; }
 table.schedule tr:last-child td { border-bottom: 0; }
 table.schedule tr.past { opacity: .5; }
 table.schedule tr.next td { background: var(--red-tint); font-weight: 600; }
@@ -131,5 +133,7 @@ table.schedule tr.next td { background: var(--red-tint); font-weight: 600; }
 
 footer.site-footer { text-align: center; color: var(--ink-soft); font-size: .85rem; padding: 28px 20px 40px; }
 
-.share-toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); background: #1F1B18; color: #fff; padding: 10px 18px; border-radius: 999px; opacity: 0; transition: all .25s; z-index: 50; }
+.share-toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); background: var(--nav); color: #fff; padding: 10px 18px; border-radius: 999px; opacity: 0; transition: all .25s; z-index: 50; }
 .share-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+footer.site-footer a { color: var(--ink-soft); }
