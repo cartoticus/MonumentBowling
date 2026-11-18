@@ -21,7 +21,7 @@ Until that's done, the form shows a message telling families to email or call th
 
 ## Updating the schedule
 
-Edit **only** `assets/schedule.js`. Add a row per practice, match, or event (the file has an example and field list at the top), commit, and push. The Schedule page sorts by date, dims past events, and highlights the next one. Bump `CACHE_NAME` in `sw.js` (e.g. `mb-cache-v2`) if you change the site's other files.
+Edit **only** `assets/schedule.js`. Add a row per practice, match, or event (the file has an example and field list at the top), commit, and push. The Schedule page sorts by date, dims past events, and highlights the next one. The site always loads fresh files when online; the offline cache is only a fallback.
 
 ## Privacy
 

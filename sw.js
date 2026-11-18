@@ -1,12 +1,12 @@
 // Monument Bowling — service worker
 // Bump CACHE_NAME whenever the site's own files change so clients pick up the update.
-const CACHE_NAME = "mb-cache-v7";
+const CACHE_NAME = "mb-cache-v8";
 const PRECACHE_URLS = [
   "./",
   "./index.html",
   "./schedule.html",
   "./join.html",
-  "./assets/style.css",
+  "./assets/style.css?v=7",
   "./assets/share.js",
   "./assets/schedule.js",
   "./assets/quote.js",
@@ -28,39 +28,25 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
-// Network-first for HTML and the schedule data (so updates show when online), cache-first for the rest.
+// Network-first for everything on this site, so edits always show up when online.
+// The cache is only a fallback for when the device is offline.
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== location.origin) return;
 
-  const fresh =
-    req.mode === "navigate" ||
-    (req.headers.get("accept") || "").includes("text/html") ||
-    url.pathname.endsWith("/schedule.js");
-
-  if (fresh) {
-    event.respondWith(
-      fetch(req)
-        .then((res) => {
+  event.respondWith(
+    fetch(req)
+      .then((res) => {
+        if (res.ok) {
           const copy = res.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
-          return res;
-        })
-        .catch(() => caches.match(req).then((res) => res || caches.match("./index.html")))
-    );
-    return;
-  }
-
-  event.respondWith(
-    caches.match(req).then((cached) => {
-      if (cached) return cached;
-      return fetch(req).then((res) => {
-        const copy = res.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(req, copy));
+        }
         return res;
-      });
-    })
+      })
+      .catch(() =>
+        caches.match(req).then((res) => res || (req.mode === "navigate" ? caches.match("./index.html") : undefined))
+      )
   );
 });
