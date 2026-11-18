@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Schedule — Monument Bowling</title>
+<meta name="description" content="Practice and match schedule for the Monument Mountain High School bowling team.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#9E1B1B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Monument Bowling">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icons/icon-192.png" alt=""><span>Monument Bowling</span></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html" class="active">Schedule</a>
+      <a href="join.html">Join the Roster</a>
+      <button type="button" class="share-btn" data-share data-share-title="Monument Bowling schedule" data-share-text="Monument Mountain High School bowling — schedule." aria-label="Share this page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap">
+  <div class="section-head">
+    <h1 style="font-size:2rem;">Team Schedule</h1>
+    <span class="tag" id="updated" hidden></span>
+  </div>
+  <p class="lead" style="margin-left:0;text-align:left;">Practices are Wednesdays and matches are Fridays, with a few exceptions. Dates and times can change during the season, so check back often.</p>
+
+  <div id="tentative" class="notice" style="margin-bottom:16px;" hidden>
+    <strong>Projected schedule.</strong> The official 2026-27 Berkshire County schedule hasn't been published yet. These dates and opponents are modeled on last season's schedule and <strong>will change</strong>. Match times are to be announced.
+  </div>
+
+  <div id="schedule-wrap"></div>
+  <p id="empty" class="notice" hidden>The full schedule is being finalized and will be posted here soon. In the meantime: practices are Wednesdays at Cove Lanes and matches are Fridays. Questions? Call or text Coach Wayne at <a href="tel:+14138541759">413-854-1759</a>.</p>
+</section>
+
+<footer class="site-footer">Monument Bowling · Monument Mountain High School · Berkshire County League</footer>
+
+<script src="assets/schedule.js"></script>
+<script>
+(function () {
+  var data = window.MB_SCHEDULE || { events: [] };
+  var events = (data.events || []).slice().sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  if (data.tentative) document.getElementById('tentative').hidden = false;
+  if (data.updated) {
+    var u = document.getElementById('updated');
+    u.textContent = 'Updated ' + data.updated;
+    u.hidden = false;
+  }
+  if (!events.length) { document.getElementById('empty').hidden = false; return; }
+
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+  var now = new Date();
+  var today = now.getFullYear() + '-' + String(now.getMonth() + 1).padStart(2, '0') + '-' + String(now.getDate()).padStart(2, '0');
+  var nextIdx = events.findIndex(function (e) { return e.date >= today; });
+  var labels = { practice: 'Practice', match: 'Match', event: 'Event' };
+
+  var rows = events.map(function (e, i) {
+    var d = new Date(e.date + 'T12:00:00');
+    var pretty = d.toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' });
+    var cls = e.date < today ? 'past' : (i === nextIdx ? 'next' : '');
+    var type = labels[e.type] ? e.type : 'event';
+    return '<tr class="' + cls + '"><td>' + esc(pretty) + '</td>' +
+      '<td><span class="kind ' + type + '">' + labels[type] + '</span></td>' +
+      '<td>' + esc(e.time) + '<br><span class="hint">' + esc(e.location) + '</span></td>' +
+      '<td>' + esc(e.note) + '</td></tr>';
+  }).join('');
+
+  document.getElementById('schedule-wrap').innerHTML =
+    '<table class="schedule"><thead><tr><th>Date</th><th>Type</th><th>Time / Place</th><th>Notes</th></tr></thead><tbody>' + rows + '</tbody></table>';
+})();
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+</script>
+<script src="assets/share.js" defer></script>
+</body>
+</html>

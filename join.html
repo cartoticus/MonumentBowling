@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Join the Roster — Monument Bowling</title>
+<meta name="description" content="Sign up for the Monument Mountain High School bowling team.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#9E1B1B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Monument Bowling">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icons/icon-192.png" alt=""><span>Monument Bowling</span></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="join.html" class="active">Join the Roster</a>
+      <button type="button" class="share-btn" data-share data-share-title="Join Monument Bowling" data-share-text="Sign up for Monument Mountain High School bowling." aria-label="Share this page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap">
+  <h1 style="font-size:2rem;">Join the Roster</h1>
+  <p class="lead" style="margin-left:0;">Complete this form as soon as possible. A parent/guardian should fill it out or review it with the player. Your info goes only to Coach Wayne and is never posted on this site.</p>
+  <div class="notice" style="margin-bottom:20px;max-width:640px;">
+    <strong>Reminder:</strong> the $120 fee is due before the first match. Make checks out to the coach directly. A player can't bowl in a match until Coach confirms their info and collects dues.
+  </div>
+
+  <form id="join-form" class="join-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <input type="hidden" name="_subject" value="Monument Bowling roster sign-up">
+    <input type="text" name="_gotcha" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <fieldset>
+      <legend>Player</legend>
+      <div class="field">
+        <label for="player_name">Player full name *</label>
+        <input type="text" id="player_name" name="player_name" required autocomplete="off">
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="grade">Grade *</label>
+          <select id="grade" name="grade" required>
+            <option value="">Select…</option>
+            <option>9</option><option>10</option><option>11</option><option>12</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="shirt">Shirt size</label>
+          <select id="shirt" name="shirt_size">
+            <option value="">Select…</option>
+            <option>Youth L</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option>
+          </select>
+        </div>
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="experience">Bowling experience</label>
+          <select id="experience" name="experience">
+            <option value="">Select…</option>
+            <option>New to bowling</option>
+            <option>Some experience</option>
+            <option>Bowled on a team or in a league</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="own_ball">Own bowling ball?</label>
+          <select id="own_ball" name="own_ball">
+            <option value="">Select…</option>
+            <option>Yes</option>
+            <option>No — will use house balls</option>
+          </select>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Parent / Guardian</legend>
+      <div class="field">
+        <label for="guardian_name">Parent/guardian name *</label>
+        <input type="text" id="guardian_name" name="guardian_name" required autocomplete="off">
+      </div>
+      <div class="row-2">
+        <div class="field">
+          <label for="guardian_email">Email *</label>
+          <input type="email" id="guardian_email" name="guardian_email" required>
+        </div>
+        <div class="field">
+          <label for="guardian_phone">Phone *</label>
+          <input type="tel" id="guardian_phone" name="guardian_phone" required>
+        </div>
+      </div>
+      <div class="field">
+        <label for="message">Anything else Coach should know?</label>
+        <textarea id="message" name="message" rows="3"></textarea>
+        <span class="hint">Transportation questions, scheduling conflicts, and similar notes.</span>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Consent</legend>
+      <label class="check">
+        <input type="checkbox" name="guardian_consent" value="yes" required>
+        <span>I am the parent/guardian of this player and I give consent for them to participate on the Monument Bowling team. *</span>
+      </label>
+      <label class="check">
+        <input type="checkbox" name="understands_fees" value="yes" required>
+        <span>I understand the $120 fee is due before the first match. *</span>
+      </label>
+    </fieldset>
+
+    <div class="submit-row">
+      <button type="submit" class="btn primary">Submit Sign-Up</button>
+      <span id="form-status" role="status"></span>
+    </div>
+  </form>
+</section>
+
+<footer class="site-footer">Monument Bowling · Monument Mountain High School · Berkshire County League</footer>
+
+<script>
+  var COACH_EMAIL = 'kitaro1@gmail.com';
+  var form = document.getElementById('join-form');
+  var statusEl = document.getElementById('form-status');
+
+  function fail(msg) { statusEl.textContent = msg; statusEl.className = 'err'; }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
+      fail('Sign-up form is not connected yet — please email ' + COACH_EMAIL + ' or call 413-854-1759.');
+      return;
+    }
+    statusEl.textContent = 'Sending…';
+    statusEl.className = '';
+    try {
+      var response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        form.reset();
+        statusEl.textContent = "Thanks — you're signed up! Coach Wayne will confirm your info.";
+        statusEl.className = 'ok';
+      } else {
+        fail('Something went wrong — please try again or email ' + COACH_EMAIL + '.');
+      }
+    } catch (err) {
+      fail('Something went wrong — please try again or email ' + COACH_EMAIL + '.');
+    }
+  });
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+</script>
+<script src="assets/share.js" defer></script>
+</body>
+</html>
