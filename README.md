@@ -23,6 +23,17 @@ Until that's done, the form shows a message telling families to email or call th
 
 Edit **only** `assets/schedule.js`. Add a row per practice, match, or event (the file has an example and field list at the top), commit, and push. The Schedule page sorts by date, dims past events, and highlights the next one. The site always loads fresh files when online; the offline cache is only a fallback.
 
+## Updating standings each week
+
+Edit **only** `assets/standings.js` (team data only — no bowler names or scores are ever posted). Each week:
+
+1. Update `week` and `asOf`, then each team's `won`, `lost`, `pins`, `avg` and `highGame` from the league's standings sheet. Win % and the ranking are calculated for you.
+2. Replace the `results` rows with last week's team matchups.
+3. Set `notice` to `""` (it currently says these are last season's numbers).
+4. Commit and push.
+
+Or send the new weekly standings PDF to Claude and ask for the update.
+
 ## Privacy
 
 This is a public site for a high school team. It never lists player names, photos, or any payment details — rosters, dues, and contact info stay in Formspree emails and your own records.
@@ -31,6 +42,7 @@ This is a public site for a high school team. It never lists player names, photo
 
 - `index.html` — home: season overview, costs, what to know, coach contact
 - `schedule.html` — schedule table, driven by `assets/schedule.js`
+- `standings.html` — team standings + latest results (data in `assets/standings.js`; also shown on the home page)
 - `join.html` — roster sign-up form (Formspree)
 - `assets/style.css`, `assets/share.js`, `assets/schedule.js`
 - `manifest.webmanifest`, `sw.js`, `assets/icons/` — installable-app support (works offline for pages already visited)

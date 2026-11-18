@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standings — Monument Bowling</title>
+<meta name="description" content="Berkshire County League team standings for the Monument Mountain Regional High School bowling team.">
+<link rel="stylesheet" href="assets/style.css?v=8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+<meta name="theme-color" content="#800020">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Monument Bowling">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="assets/icons/icon-192.png" alt=""><span>Monument Bowling</span></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="standings.html" class="active">Standings</a>
+      <a href="join.html">Join the Roster</a>
+      <a href="index.html#resources">Resources</a>
+      <button type="button" class="share-btn" data-share data-share-title="Monument Bowling standings" data-share-text="Monument Mountain Regional High School bowling — team standings." aria-label="Share this page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
+    </nav>
+  </div>
+</header>
+
+<section class="wrap">
+  <h1 style="font-size:2rem;">Team Standings</h1>
+  <p class="lead" style="margin-left:0;text-align:left;">Berkshire County League team standings, updated each week during the season. Teams are ranked by league points won. Win % is points won out of all points played.</p>
+  <div data-standings></div>
+</section>
+
+<footer class="site-footer">Monument Bowling · <a href="https://mmrhs.bhrsd.org/" target="_blank" rel="noopener">Monument Mountain Regional High School</a> · Berkshire County League</footer>
+
+<script src="assets/standings.js"></script>
+<script src="assets/standings-view.js" defer></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+</script>
+<script src="assets/share.js" defer></script>
+<script src="assets/quote.js" defer></script>
+</body>
+</html>
