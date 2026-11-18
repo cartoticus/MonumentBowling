@@ -34,6 +34,10 @@ Edit **only** `assets/standings.js` (team data only — no bowler names or score
 
 Or send the new weekly standings PDF to Claude and ask for the update.
 
+## Contact form
+
+The Contact page uses the same Formspree form as the sign-up page; its messages are labeled "Monument Bowling: message for the coach" in your inbox. To keep them separate, create a second Formspree form and change the `action` in `contact.html`.
+
 ## Privacy
 
 This is a public site for a high school team. It never lists player names, photos, or any payment details — rosters, dues, and contact info stay in Formspree emails and your own records.
@@ -43,6 +47,7 @@ This is a public site for a high school team. It never lists player names, photo
 - `index.html` — home: season overview, costs, what to know, coach contact
 - `schedule.html` — schedule table, driven by `assets/schedule.js`
 - `standings.html` — team standings + latest results (data in `assets/standings.js`; also shown on the home page)
+- `contact.html` — "Contact the Coach" message form (Formspree; no phone or email is shown on the site)
 - `join.html` — roster sign-up form (Formspree)
 - `assets/style.css`, `assets/share.js`, `assets/schedule.js`
 - `manifest.webmanifest`, `sw.js`, `assets/icons/` — installable-app support (works offline for pages already visited)

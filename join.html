@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Join the Roster — Monument Bowling</title>
 <meta name="description" content="Sign up for the Monument Mountain Regional High School bowling team.">
-<link rel="stylesheet" href="assets/style.css?v=8">
+<link rel="stylesheet" href="assets/style.css?v=9">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
@@ -23,6 +23,7 @@
       <a href="schedule.html">Schedule</a>
       <a href="standings.html">Standings</a>
       <a href="join.html" class="active">Join the Roster</a>
+      <a href="contact.html">Contact</a>
       <a href="index.html#resources">Resources</a>
       <button type="button" class="share-btn" data-share data-share-title="Join Monument Bowling" data-share-text="Sign up for Monument Mountain Regional High School bowling." aria-label="Share this page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg></button>
     </nav>
@@ -128,7 +129,6 @@
 <footer class="site-footer">Monument Bowling · <a href="https://mmrhs.bhrsd.org/" target="_blank" rel="noopener">Monument Mountain Regional High School</a> · Berkshire County League</footer>
 
 <script>
-  var COACH_EMAIL = 'kitaro1@gmail.com';
   var form = document.getElementById('join-form');
   var statusEl = document.getElementById('form-status');
 
@@ -136,10 +136,6 @@
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
-    if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-      fail('Sign-up form is not connected yet — please email ' + COACH_EMAIL + ' or call 413-854-1759.');
-      return;
-    }
     statusEl.textContent = 'Sending…';
     statusEl.className = '';
     try {
@@ -153,10 +149,10 @@
         statusEl.textContent = "Thanks — you're signed up! Coach Wayne will confirm your info.";
         statusEl.className = 'ok';
       } else {
-        fail('Something went wrong — please try again or email ' + COACH_EMAIL + '.');
+        fail('Something went wrong — please try again in a few minutes, or use the Contact the Coach page.');
       }
     } catch (err) {
-      fail('Something went wrong — please try again or email ' + COACH_EMAIL + '.');
+      fail('Something went wrong — please try again in a few minutes, or use the Contact the Coach page.');
     }
   });
 </script>
