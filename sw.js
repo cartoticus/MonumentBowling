@@ -1,6 +1,6 @@
 // Monument Bowling — service worker
 // Bump CACHE_NAME whenever the site's own files change so clients pick up the update.
-const CACHE_NAME = "mb-cache-v6";
+const CACHE_NAME = "mb-cache-v7";
 const PRECACHE_URLS = [
   "./",
   "./index.html",
@@ -9,6 +9,8 @@ const PRECACHE_URLS = [
   "./assets/style.css",
   "./assets/share.js",
   "./assets/schedule.js",
+  "./assets/quote.js",
+  "./assets/quotes.json",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
   "./manifest.webmanifest",

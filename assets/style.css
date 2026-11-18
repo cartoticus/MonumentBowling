@@ -137,3 +137,11 @@ footer.site-footer { text-align: center; color: var(--ink-soft); font-size: .85r
 .share-toast.show { opacity: 1; transform: translate(-50%, 0); }
 
 footer.site-footer a { color: var(--ink-soft); }
+
+/* Quote banner */
+.quote-banner { background: var(--red-tint); border-bottom: 1px solid var(--line); }
+.quote-inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.quote-text { margin: 0; font-family: Georgia, "Times New Roman", serif; font-style: italic; color: var(--ink); font-size: 1.02rem; line-height: 1.4; }
+.quote-btn { flex: none; font: inherit; font-size: .8rem; font-weight: 700; color: var(--red); background: transparent; border: 1.5px solid var(--red); border-radius: 999px; padding: 5px 14px; cursor: pointer; }
+.quote-btn:hover { background: var(--card); }
+@media (max-width: 520px) { .quote-inner { flex-direction: column; align-items: flex-start; gap: 8px; } }
