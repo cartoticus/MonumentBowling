@@ -164,3 +164,9 @@ td.pts { white-space: nowrap; }
   .res-W { background: #1F3223; color: #8FD3A0; }
   .res-T { background: #34302A; color: #CFC3A0; }
 }
+
+/* Home page banner */
+.hero-banner { background: #4A0516; }
+.hero-banner img { display: block; width: 100%; height: auto; }
+.hero-cta { text-align: center; padding-block: 24px 4px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
