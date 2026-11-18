@@ -8,11 +8,16 @@
 //   time:     free text, e.g. "5:15–6:15 PM"
 //   location: free text, e.g. "Cove Lanes"
 //   note:     optional free text (opponent, JV/Varsity, etc.)
+//   won, lost: optional. Monument's league points won / lost in that match, as
+//             numbers, e.g. won: 2, lost: 1. Add these after each week's match and the
+//             page shows a W/L/T badge and the running season points total.
 //
 // When the official 2026-27 Berkshire County schedule is published:
 //   1. Replace the rows below with the real ones.
 //   2. Set tentative to false (this hides the "projected" banner on the Schedule page).
 //   3. Set updated to today's date.
+//
+// Each week: add  won: N, lost: N  to that match's row (and update standings.js too).
 
 window.MB_SCHEDULE = {
   tentative: true,   // true = projected from the 2025-26 schedule, not official
