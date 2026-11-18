@@ -15,7 +15,7 @@ The Join page posts to [Formspree](https://formspree.io), like the golf league s
 
 1. Log in to Formspree and create a **new form** (use a separate one so bowling sign-ups don't mix with golf).
 2. Copy its ID (the part after `/f/` in the form URL).
-3. In `join.html`, replace `YOUR_FORM_ID` in the `action` attribute of `<form id="join-form">` with that ID.
+3. In `join.html`, the form ID is set in the `action` attribute of `<form id="join-form">` with that ID.
 
 Until that's done, the form shows a message telling families to email or call the coach instead of silently failing. Submissions arrive in the Formspree dashboard and are emailed to you. The free tier covers 50 submissions/month.
 
